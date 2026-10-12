@@ -49,3 +49,13 @@ def read_employees():
        
 employees = read_employees()
 print(employees)
+
+
+# Task 3
+def column_index(field):
+    index = employees["fields"].index(field)
+    return index
+
+
+employee_id_column = column_index("employee_id")
+# print(employee_id_column)
