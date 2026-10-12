@@ -63,9 +63,13 @@ employee_id_column = column_index("employee_id")
 # Task 4
 def first_name(row):
     first_name_col = column_index("first_name")
-    row_list =  employees["rows"]
-    row = row_list[row]
-    rtn_val = row[first_name_col]
-    return rtn_val
+    # row_list =  employees["rows"]
+    # row = row_list[row]
+    # rtn_val = row[first_name_col]
+    # return rtn_val
 
-# print(first_name(2))
+    return employees["rows"][row][first_name_col]
+
+print(first_name(2))
+
+# Task 5
