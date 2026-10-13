@@ -6,6 +6,7 @@
 import csv
 import traceback
 import os
+import custom_module
 
 from pathlib import Path # this is to make it easier to locate the csv file no matter where the script or debugger is being run
 
@@ -146,6 +147,16 @@ def get_this_value():
     return os.environ.get('THISVALUE')
 
 #print(get_this_value())
+
+
+# Task 11
+def set_that_secret(secret):
+    custom_module.set_secret(secret)
+
+#set_that_secret("butterfly")
+#print(custom_module.secret)
+
+
 
     
 
