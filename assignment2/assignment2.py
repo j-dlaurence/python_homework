@@ -5,6 +5,7 @@
 
 import csv
 import traceback
+import os
 
 from pathlib import Path # this is to make it easier to locate the csv file no matter where the script or debugger is being run
 
@@ -125,16 +126,6 @@ row = employees["rows"][3]
 #print(employee_dict(row))
 
 # Task 9
-# Create a function called all_employees_dict.
-
-# The keys in the dict are the employee_id values from the rows in the employees dict.
-# For each key, the value is the employee dict created for that row. (Use the employee_dict function you created in task 8.)
-# The function should return the resulting dict of dicts.
-
-# Add a line to your program that calls this function and prints the result.
-
-# Get the test working.
-
 def all_employees_dict():
     # output = {}
     # employee_id_index = column_index("employee_id")
@@ -148,7 +139,13 @@ def all_employees_dict():
     employee_id_index = column_index("employee_id")
     return {row[employee_id_index]: employee_dict(row) for row in employees["rows"]}
 
-print(all_employees_dict())
+#print(all_employees_dict())
+
+# Task 10
+def get_this_value():
+    return os.environ.get('THISVALUE')
+
+#print(get_this_value())
 
     
 
