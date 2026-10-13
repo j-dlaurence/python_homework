@@ -48,7 +48,7 @@ def read_employees():
 
        
 employees = read_employees()
-print(employees)
+#print(employees)
 
 
 # Task 3
@@ -70,7 +70,7 @@ def first_name(row):
 
     return employees["rows"][row][first_name_col]
 
-print(first_name(2))
+#print(first_name(2))
 
 # Task 5
 def employee_find(employee_id):
@@ -104,3 +104,32 @@ def sort_by_last_name():
     employees["rows"].sort(key = lambda row : row[column_index("last_name")] )
     return employees["rows"]
     # this is equivalent: the sort function is being passed a key that is each row at a time being turned into the col index of last_name in that row
+
+# Task 8
+
+    # Create a function called employee_dict.  It is passed a row from the employees dict (not a row number).  It returns a dict.
+
+# The keys in the dict are the column headers from employees["fields"].
+# The values in the dict are the corresponding values from the row.
+# Do not include the employee_id in the dict. You skip that field for now.
+# Return the resulting dict for the employee.
+
+# Add a line to your program that calls this function and prints the result. 
+# Use a row from the rows stored in the employees dict to pass to the function for this test.
+
+def employee_dict (row):
+    # employee = dict.fromkeys (employees["fields"]) # this line creates a new dictionary and fills the keys from the iterable supplied
+    # for i, key in enumerate(employee):
+    #     employee[key] = row[i]
+
+    # del employee["employee_id"] # we are told not to include this
+    # return employee
+
+    # An easier way is to use zip()
+    employee  = dict(zip(employees["fields"], row))
+    del employee["employee_id"] # we are told not to include this
+    return employee
+
+row = employees["rows"][3]
+print(employee_dict(row))
+
