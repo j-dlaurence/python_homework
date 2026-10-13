@@ -12,7 +12,7 @@ from pathlib import Path # this is to make it easier to locate the csv file no m
 
 
 def read_employees():
-    dict = {}
+    employees_dict = {}
     csv_path = Path(__file__).parent.parent / 'csv' / 'employees.csv' # __file__ refers to the location of this script; Path turns that into a path object
     try: 
         with open(csv_path, 'r') as file:
@@ -34,10 +34,10 @@ def read_employees():
 
             fields = next(reader)
             rows = list(reader) 
-            dict['fields'] = fields
-            dict['rows'] = rows
+            employees_dict['fields'] = fields
+            employees_dict['rows'] = rows
 
-        return dict
+        return employees_dict
    
     except Exception as e:
         trace_back = traceback.extract_tb(e.__traceback__)
@@ -156,7 +156,38 @@ def set_that_secret(secret):
 #set_that_secret("butterfly")
 #print(custom_module.secret)
 
+# Task 12
+def read_minutes():
+    minutes1_path = Path(__file__).parent.parent / 'csv' / 'minutes1.csv' 
+    minutes2_path = Path(__file__).parent.parent / 'csv' / 'minutes2.csv'
 
+    def csv_to_dict(file_path):
+        try: 
+            with open(file_path, 'r') as file:
+                reader = csv.reader(file)
+                fields = tuple(next(reader))            
+                rows = [tuple(row) for row in reader]
+                output = {"fields": fields, "rows" : rows}
+        
+        except Exception as e:
+            trace_back = traceback.extract_tb(e.__traceback__)
+            stack_trace = list()
+            for trace in trace_back:
+                stack_trace.append(f'File : {trace[0]} , Line : {trace[1]}, Func.Name : {trace[2]}, Message : {trace[3]}')
+            print(f"Exception type: {type(e).__name__}")
+            message = str(e)
+            if message:
+                print(f"Exception message: {message}")
+            print(f"Stack trace: {stack_trace}")
+        return output
+    
+    minutes1 = csv_to_dict(minutes1_path)
+    minutes2 = csv_to_dict(minutes2_path)
+    
+    return minutes1, minutes2
 
+minutes1, minutes2 = read_minutes()
+# print(minutes1)
+# print(minutes2)
     
 
