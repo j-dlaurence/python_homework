@@ -84,4 +84,23 @@ def employee_find(employee_id):
 def employee_find_2(employee_id):
     matches = list(filter(lambda row : int(row[employee_id_column]) == employee_id , employees["rows"]))
     return matches
-    
+
+# Task 7
+def sort_by_last_name():
+    # sort() calls this on each row and sorts by whatever it returns,
+    # so it returns the last name from the row.
+    # We look up the column position by name rather than hard-coding 2,
+    # in case the column order in the csv ever changes.
+    # def last_name_key(row):
+    #     last_name_col = column_index("last_name")
+    #     return row[last_name_col] 
+  
+    # employees["rows"].sort(key=last_name_key) # this line first identifies the last_name for each row, using the last_name_key function
+    # and then every row in employees["rows"] is sorted on that value. Sort() automtically passes the next list object to the function
+    # which in this case represents a row, so we refer to that variable as row as a parameter for the key function
+    # return employees["rows"]
+
+    # But we can do this quicker with a lamda
+    employees["rows"].sort(key = lambda row : row[column_index("last_name")] )
+    return employees["rows"]
+    # this is equivalent: the sort function is being passed a key that is each row at a time being turned into the col index of last_name in that row
