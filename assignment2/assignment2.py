@@ -4,6 +4,8 @@
 # Task 2
 
 import csv
+import traceback
+
 from pathlib import Path # this is to make it easier to locate the csv file no matter where the script or debugger is being run
 
 
@@ -106,17 +108,6 @@ def sort_by_last_name():
     # this is equivalent: the sort function is being passed a key that is each row at a time being turned into the col index of last_name in that row
 
 # Task 8
-
-    # Create a function called employee_dict.  It is passed a row from the employees dict (not a row number).  It returns a dict.
-
-# The keys in the dict are the column headers from employees["fields"].
-# The values in the dict are the corresponding values from the row.
-# Do not include the employee_id in the dict. You skip that field for now.
-# Return the resulting dict for the employee.
-
-# Add a line to your program that calls this function and prints the result. 
-# Use a row from the rows stored in the employees dict to pass to the function for this test.
-
 def employee_dict (row):
     # employee = dict.fromkeys (employees["fields"]) # this line creates a new dictionary and fills the keys from the iterable supplied
     # for i, key in enumerate(employee):
@@ -131,5 +122,33 @@ def employee_dict (row):
     return employee
 
 row = employees["rows"][3]
-print(employee_dict(row))
+#print(employee_dict(row))
+
+# Task 9
+# Create a function called all_employees_dict.
+
+# The keys in the dict are the employee_id values from the rows in the employees dict.
+# For each key, the value is the employee dict created for that row. (Use the employee_dict function you created in task 8.)
+# The function should return the resulting dict of dicts.
+
+# Add a line to your program that calls this function and prints the result.
+
+# Get the test working.
+
+def all_employees_dict():
+    # output = {}
+    # employee_id_index = column_index("employee_id")
+    # for row in employees["rows"]:
+    #     employee_id = row[employee_id_index]
+    #     employee_data = employee_dict(row)
+    #     output[employee_id] = employee_data
+    # return output
+
+    # or we use dict comprehension, which is the name given for defining a dict comprehensively in this manner:
+    employee_id_index = column_index("employee_id")
+    return {row[employee_id_index]: employee_dict(row) for row in employees["rows"]}
+
+print(all_employees_dict())
+
+    
 
