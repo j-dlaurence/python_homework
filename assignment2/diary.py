@@ -13,7 +13,7 @@ try:
         file.write(entry + '\n')
 
         while isFinished == False:
-            entry = input("What else? testing ")
+            entry = input("What else?")
             file.write(entry + '\n')
             if (entry == "done for now"): isFinished = True
 
