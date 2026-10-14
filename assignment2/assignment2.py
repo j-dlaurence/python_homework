@@ -189,5 +189,32 @@ def read_minutes():
 minutes1, minutes2 = read_minutes()
 # print(minutes1)
 # print(minutes2)
+
+# Task 13
+def create_minutes_set():
+    
+    # set1 = set()
+    # set2 = set()
+    # for row in minutes1["rows"]:
+    #     set1.add(row)
+    # for row in minutes2["rows"]:
+    #     set2.add(row)  
+
+    # but since the set constructor takes an interable, it's quicker (and does the same thing) to do this:
+    set1 = set(minutes1["rows"])
+    set2 = set(minutes2["rows"])
+    return set1.union(set2) # a union combines the two and removes any duplicates
+   
+    # this could even be simplified to
+    # return set(minutes1["rows"]) | set(minutes2["rows"]) since the bar is a union operator for sets
+    # equivalent to the 'or' operator since we want items in one or the other 
+
+minutes_set = create_minutes_set()
+# print(len(minutes1["rows"]), len(minutes2["rows"]))
+# print(len(set(minutes1["rows"])), len(set(minutes2["rows"])))
+# print(len(create_minutes_set()))
+
+                                                                                                                                            
+                            
     
 
