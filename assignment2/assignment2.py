@@ -223,6 +223,30 @@ def create_minutes_list():
 minutes_list = create_minutes_list()
 # print(minutes_list)
 
+# Task 15
+def write_sorted_list():
+    minutes_list.sort(key=lambda item: item[1]) #this tells it to sort by the value of item[1] for each in the list, which is the date
+    converted_mins_list = list(map(lambda x: (x[0], datetime.strftime(x[1], "%B %d, %Y")), minutes_list))
+    minutes_path = Path(__file__).parent / 'minutes.csv' 
+    try:
+        with open(minutes_path, 'w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(minutes1["fields"])
+            writer.writerows(converted_mins_list)  
+
+    except Exception as e:
+        trace_back = traceback.extract_tb(e.__traceback__)
+        stack_trace = list()
+        for trace in trace_back:
+            stack_trace.append(f'File : {trace[0]} , Line : {trace[1]}, Func.Name : {trace[2]}, Message : {trace[3]}')
+        print(f"Exception type: {type(e).__name__}")
+        message = str(e)
+        if message:
+            print(f"Exception message: {message}")
+        print(f"Stack trace: {stack_trace}")
+    return converted_mins_list
+
+write_sorted_list()
 
 
                             
