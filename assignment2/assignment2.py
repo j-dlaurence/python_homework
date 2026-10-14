@@ -7,7 +7,7 @@ import csv
 import traceback
 import os
 import custom_module
-
+from datetime import datetime
 from pathlib import Path # this is to make it easier to locate the csv file no matter where the script or debugger is being run
 
 
@@ -214,7 +214,17 @@ minutes_set = create_minutes_set()
 # print(len(set(minutes1["rows"])), len(set(minutes2["rows"])))
 # print(len(create_minutes_set()))
 
-                                                                                                                                            
+# Task 14
+def create_minutes_list():
+    mins_list = list(minutes_set)
+    formatted_mins_list = list(map(lambda x: (x[0], datetime.strptime(x[1], "%B %d, %Y")), mins_list))
+    return formatted_mins_list
+
+minutes_list = create_minutes_list()
+# print(minutes_list)
+
+
+
                             
     
 
