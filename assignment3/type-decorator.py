@@ -1,6 +1,6 @@
 # J-D Laurence
 
-# Task 3
+# Task 2
 
 # Declare a decorator called type_converter. It has one argument called type_of_output,
 # which would be a type, like str or int or float. 
