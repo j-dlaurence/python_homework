@@ -13,14 +13,6 @@ logger.addHandler(logging.FileHandler(LOGFILE,"a"))
 # To write a log record:
 # logger.log(logging.INFO, "this string would be logged")
 
-
-#a function gets passed to the decorator and the following are logged in the log file:
-# function: <the function name>
-# positional parameters: <a list of the positional parameters (as a tuple or a list), or "none" if none are passed>
-# keyword parameters: <a dict of the keyword parameters, or "none" if none are passed>
-# return: <the return value>
-
-
 # A decorator says: “Take this function or class, and pass it through another function to modify it.”
 
     # the first time this is run is when the program reaches the @ line, and all that happens is
