@@ -62,4 +62,14 @@ def logger_decorator(func):
 def func1():
     print("Hello, World!")
 
+@logger_decorator
+def func2(*args): #this means it can take a variable number of positional arguments, and the function can access them via the args list
+    return True
+
+@logger_decorator
+def func3(**kwargs):  # now the function accesses all the keywords and their values via a dict
+    return logger_decorator #we return the memory address of the function itself, a bit like wrapper does
+
 func1()
+func2(1, 2, 3, 4)
+func3(b=2, c=3) 
