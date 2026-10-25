@@ -26,3 +26,17 @@ print(task1_older)
 #4
 task1_older.to_csv("employees.csv", index=False)
 
+# Task 2
+#1
+task2_employees = pd.read_csv("employees.csv")
+print(task2_employees)
+
+#2
+json_employees = pd.read_json("additional_employees.json")
+print(json_employees)
+
+#3
+more_employees = pd.concat([task2_employees, json_employees], ignore_index=True)
+print(more_employees)
+
+
